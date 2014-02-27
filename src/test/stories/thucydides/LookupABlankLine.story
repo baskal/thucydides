@@ -17,6 +17,6 @@ scenario "Looking up a blank line", {
         end_user.looks_for("");
     }
     then "he should see the special page with field 'search'", {
-       end_user.assert_elements()
+       end_user.assert_elements("There is a page named", "There were no results")
     }
 }

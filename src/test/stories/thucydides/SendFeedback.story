@@ -17,6 +17,6 @@ scenario "Cheking of submiting feedback", {
         end_user.send_feedback_about_wictionary()
     }
     then "he should see 'Thank you for giving us some of your time.'", {
-       end_user.assert_thanks_for_feedback()
+       end_user.assert_thanks_for_feedback("Thank you for giving us some of your time.")
     }
 }

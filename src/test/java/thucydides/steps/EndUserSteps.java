@@ -1,6 +1,5 @@
 package thucydides.steps;
 
-import jnr.ffi.types.sa_family_t;
 import thucydides.pages.DictionaryPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -37,9 +36,6 @@ public class EndUserSteps extends ScenarioSteps {
     public void should_see_definition(String definition) {
         boolean isContains = false;
         for (String line: dictionaryPage.getDefinitions()) {
-            System.out.println(line);
-            System.out.println(line.equals(definition));
-
             if (line.startsWith(definition)) {
                 isContains = true;
                 break;
@@ -66,10 +62,10 @@ public class EndUserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void assert_elements() {
+    public void assert_elements(String s, String p) {
         specialPage.is_text_field_displayed();
-        assertFalse(specialPage.containsText("There is a page named"));
-        assertFalse(specialPage.containsText("There were no results"));
+        assertFalse(specialPage.containsText(s));
+        assertFalse(specialPage.containsText(p));
     }
 
     @Step
@@ -88,8 +84,8 @@ public class EndUserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void assert_thanks_for_feedback() {
-        dictionaryPage.containsText("Thank you for giving us some of your time.");
+    public void assert_thanks_for_feedback(String s) {
+        dictionaryPage.containsText(s);
     }
 
     @Step
